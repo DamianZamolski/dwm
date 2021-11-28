@@ -1,7 +1,7 @@
 /* See LICENSE file for copyright and license details. */
 
 /* appearance */
-static const unsigned int borderpx  = 5;        /* border pixel of windows */
+static const unsigned int borderpx  = 4;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 0;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
@@ -15,7 +15,7 @@ static const char green[]        = "#50a14f";
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
 	[SchemeNorm] = { "#383a42", "#fafafa", col_gray2 },
-	[SchemeSel]  = { col_gray4, green,   "#ca1243" },
+	[SchemeSel]  = { "#383a42", green,   green},
 };
 
 /* tagging */
