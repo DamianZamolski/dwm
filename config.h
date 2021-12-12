@@ -32,9 +32,9 @@ static const char *firefoxCmd[] = {"firefox-developer-edition", NULL};
 static const char *passMenuCmd[] = {"passmenu", NULL};
 
 static const Key keys[] = {
+  {MODKEY, XK_Return, spawn, {.v = stCmd}},
   {MODKEY, XK_p, spawn, {.v = dmenuCmd}},
   {MODKEY|ShiftMask, XK_p, spawn, {.v = passMenuCmd}},
-  {MODKEY, XK_t, spawn, {.v = stCmd}},
   {MODKEY, XK_f, spawn, {.v = firefoxCmd}},
   {MODKEY, XK_b, togglebar, {0}},
   {MODKEY, XK_j, focusstack, {.i = +1}},
