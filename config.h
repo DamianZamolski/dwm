@@ -7,7 +7,7 @@ static const int lockfullscreen = 1;
 static const unsigned int snap = 32;
 static const int showbar = 0;
 static const int topbar = 1;
-static const char *fonts[] = {"Source Code Pro:size=16"};
+static const char *fonts[] = {"Source Code Pro:pixelsize=16:antialias=true:autohint=true"};
 static const char *colors[][3] = {
   [SchemeNorm] = {"#000000", "#fafafa", "#000000"},
   [SchemeSel] = {"#000000", "#50a14f", "#50a14f"},
