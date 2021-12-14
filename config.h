@@ -9,8 +9,8 @@ static const int showbar = 0;
 static const int topbar = 1;
 static const char *fonts[] = {"Source Code Pro:size=16"};
 static const char *colors[][3] = {
-  [SchemeNorm] = {"#383a42", "#fafafa", "#000000"},
-  [SchemeSel] = {"#383a42", "#50a14f", "#50a14f"},
+  [SchemeNorm] = {"#000000", "#fafafa", "#000000"},
+  [SchemeSel] = {"#000000", "#50a14f", "#50a14f"},
 };
 
 static const Layout layouts[] = {
