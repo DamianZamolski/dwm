@@ -30,12 +30,16 @@ static const char *dmenuCmd[] = {"dmenu_run", NULL};
 static const char *stCmd[] = {"st", NULL};
 static const char *firefoxCmd[] = {"firefox-developer-edition", NULL};
 static const char *passMenuCmd[] = {"passmenu", NULL};
+static const char *screenshotCmd[] = {"screenshot", NULL};
+static const char *selectionScreenshotCmd[] = {"selection-screenshot", NULL};
 
 static const Key keys[] = {
   {MODKEY, XK_Return, spawn, {.v = stCmd}},
   {MODKEY, XK_p, spawn, {.v = dmenuCmd}},
-  {MODKEY|ShiftMask, XK_p, spawn, {.v = passMenuCmd}},
   {MODKEY, XK_f, spawn, {.v = firefoxCmd}},
+  {MODKEY|ShiftMask, XK_p, spawn, {.v = passMenuCmd}},
+  {MODKEY, XK_s, spawn, {.v = screenshotCmd}},
+  {MODKEY|ShiftMask, XK_s, spawn, {.v = selectionScreenshotCmd}},
   {MODKEY, XK_b, togglebar, {0}},
   {MODKEY, XK_j, focusstack, {.i = +1}},
   {MODKEY, XK_k, focusstack, {.i = -1}},
