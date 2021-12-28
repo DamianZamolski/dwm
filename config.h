@@ -37,8 +37,11 @@ static const char *selectionScreenshotCmd[] = {"selection-screenshot", NULL};
 static const char *selectionScreenshotToClipboardCmd[] = {"selection-screenshot-to-clipboard", NULL};
 static const char *increaseVolumeCmd[] = {"amixer", "-c", "1", "sset", "Master", "1%+", NULL};
 static const char *decreaseVolumeCmd[] = {"amixer", "-c", "1", "sset", "Master", "1%-", NULL};
+static const char *setMaxVolumeCmd[] = {"amixer", "-c", "1", "sset", "Master", "100%", NULL};
+static const char *muteVolumeCmd[] = {"amixer", "-c", "1", "sset", "Master", "0%", NULL};
 static const char *increaseBrightnessCmd[] = {"xbacklight", "-inc", "1", NULL};
 static const char *decreaseBrightnessCmd[] = {"xbacklight", "-dec", "1", NULL};
+static const char *setMaxBrightnessCmd[] = {"xbacklight", "-set", "100", NULL};
 
 static const Key keys[] = {
   {MODKEY, XK_Return, spawn, {.v = stCmd}},
@@ -51,8 +54,11 @@ static const Key keys[] = {
   {MODKEY|ControlMask|ShiftMask, XK_Print, spawn, {.v = selectionScreenshotToClipboardCmd}},
   {MODKEY, XK_Up, spawn, {.v = increaseVolumeCmd}},
   {MODKEY, XK_Down, spawn, {.v = decreaseVolumeCmd}},
+  {MODKEY|ShiftMask, XK_Up, spawn, {.v = setMaxVolumeCmd}},
+  {MODKEY|ShiftMask, XK_Down, spawn, {.v = muteVolumeCmd}},
   {MODKEY, XK_Right, spawn, {.v = increaseBrightnessCmd}},
   {MODKEY, XK_Left, spawn, {.v = decreaseBrightnessCmd}},
+  {MODKEY|ShiftMask, XK_Right, spawn, {.v = setMaxBrightnessCmd}},
   {MODKEY, XK_b, togglebar, {0}},
   {MODKEY, XK_j, focusstack, {.i = +1}},
   {MODKEY, XK_k, focusstack, {.i = -1}},
