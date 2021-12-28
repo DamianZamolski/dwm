@@ -26,6 +26,7 @@ static const Layout layouts[] = {
 {MODKEY|ControlMask|ShiftMask, KEY, toggletag, {.ui = 1 << TAG}}
 
 static char dmenumon[2] = "0";
+
 static const char *dmenuCmd[] = {"dmenu_run", NULL};
 static const char *stCmd[] = {"st", NULL};
 static const char *firefoxCmd[] = {"firefox-developer-edition", NULL};
@@ -34,6 +35,10 @@ static const char *screenshotCmd[] = {"screenshot", NULL};
 static const char *screenshotToClipboardCmd[] = {"screenshot-to-clipboard", NULL};
 static const char *selectionScreenshotCmd[] = {"selection-screenshot", NULL};
 static const char *selectionScreenshotToClipboardCmd[] = {"selection-screenshot-to-clipboard", NULL};
+static const char *increaseVolumeCmd[] = {"amixer", "-c", "1", "sset", "Master", "1%+", NULL};
+static const char *decreaseVolumeCmd[] = {"amixer", "-c", "1", "sset", "Master", "1%-", NULL};
+static const char *increaseBrightnessCmd[] = {"xbacklight", "-inc", "1", NULL};
+static const char *decreaseBrightnessCmd[] = {"xbacklight", "-dec", "1", NULL};
 
 static const Key keys[] = {
   {MODKEY, XK_Return, spawn, {.v = stCmd}},
@@ -44,6 +49,10 @@ static const Key keys[] = {
   {MODKEY|ControlMask, XK_Print, spawn, {.v = screenshotToClipboardCmd}},
   {MODKEY|ShiftMask, XK_Print, spawn, {.v = selectionScreenshotCmd}},
   {MODKEY|ControlMask|ShiftMask, XK_Print, spawn, {.v = selectionScreenshotToClipboardCmd}},
+  {MODKEY, XK_Up, spawn, {.v = increaseVolumeCmd}},
+  {MODKEY, XK_Down, spawn, {.v = decreaseVolumeCmd}},
+  {MODKEY, XK_Right, spawn, {.v = increaseBrightnessCmd}},
+  {MODKEY, XK_Left, spawn, {.v = decreaseBrightnessCmd}},
   {MODKEY, XK_b, togglebar, {0}},
   {MODKEY, XK_j, focusstack, {.i = +1}},
   {MODKEY, XK_k, focusstack, {.i = -1}},
