@@ -30,9 +30,11 @@ static char dmenumon[2] = "0";
 
 static const char *dmenuCmd[] = {"dmenu_run", NULL};
 static const char *firefoxCmd[] = {"firefox-developer-edition", NULL};
+static const char *intellijCmd[] = {"intellij-idea-ultimate-edition", NULL};
 static const char *rocketchatCmd[] = {"rocketchat-desktop", NULL};
 static const char *stCmd[] = {"st", NULL};
 static const char *thunderbirdCmd[] = {"thunderbird", NULL};
+static const char *webstormCmd[] = {"webstorm", NULL};
 
 static const char *screenshotCmd[] = {"screenshot", NULL};
 static const char *screenshotToClipboardCmd[] = {"screenshot-to-clipboard", NULL};
@@ -53,8 +55,10 @@ static const Key keys[] = {
   {MODKEY, XK_m, spawn, {.v = dmenuCmd}},
 
   {MODKEY, XK_f, spawn, {.v = firefoxCmd}},
+  {MODKEY, XK_i, spawn, {.v = intellijCmd}},
   {MODKEY, XK_r, spawn, {.v = rocketchatCmd}},
   {MODKEY, XK_t, spawn, {.v = thunderbirdCmd}},
+  {MODKEY, XK_w, spawn, {.v = webstormCmd}},
 
   {MODKEY, XK_Print, spawn, {.v = screenshotCmd}},
   {MODKEY|ControlMask, XK_Print, spawn, {.v = screenshotToClipboardCmd}},
