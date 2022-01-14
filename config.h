@@ -27,8 +27,9 @@ static const Layout layouts[] = {
 {MODKEY|ControlMask|ShiftMask, KEY, toggletag, {.ui = 1 << TAG}}
 
 static char dmenumon[2] = "0";
-
 static const char *dmenuCmd[] = {"dmenu_run", NULL};
+
+static const char *discordCmd[] = {"discord", NULL};
 static const char *firefoxCmd[] = {"firefox-developer-edition", NULL};
 static const char *intellijCmd[] = {"intellij-idea-ultimate-edition", NULL};
 static const char *rocketchatCmd[] = {"rocketchat-desktop", NULL};
@@ -54,6 +55,7 @@ static const Key keys[] = {
   {MODKEY, XK_Return, spawn, {.v = stCmd}},
   {MODKEY, XK_m, spawn, {.v = dmenuCmd}},
 
+  {MODKEY, XK_d, spawn, {.v = discordCmd}},
   {MODKEY, XK_f, spawn, {.v = firefoxCmd}},
   {MODKEY, XK_i, spawn, {.v = intellijCmd}},
   {MODKEY, XK_r, spawn, {.v = rocketchatCmd}},
