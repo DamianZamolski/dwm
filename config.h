@@ -33,6 +33,7 @@ static const char *discordCmd[] = {"discord", NULL};
 static const char *firefoxCmd[] = {"firefox-developer-edition", NULL};
 static const char *intellijCmd[] = {"intellij-idea-ultimate-edition", NULL};
 static const char *rocketchatCmd[] = {"rocketchat-desktop", NULL};
+static const char *signalCmd[] = {"signal-desktop", NULL};
 static const char *stCmd[] = {"st", NULL};
 static const char *thunderbirdCmd[] = {"thunderbird", NULL};
 static const char *webstormCmd[] = {"webstorm", NULL};
@@ -59,6 +60,7 @@ static const Key keys[] = {
   {MODKEY, XK_f, spawn, {.v = firefoxCmd}},
   {MODKEY, XK_i, spawn, {.v = intellijCmd}},
   {MODKEY, XK_r, spawn, {.v = rocketchatCmd}},
+  {MODKEY, XK_s, spawn, {.v = signalCmd}},
   {MODKEY, XK_t, spawn, {.v = thunderbirdCmd}},
   {MODKEY, XK_w, spawn, {.v = webstormCmd}},
 
