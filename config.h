@@ -44,10 +44,10 @@ static const char *screenshotToClipboardCmd[] = {"screenshot-to-clipboard", NULL
 static const char *selectionScreenshotCmd[] = {"selection-screenshot", NULL};
 static const char *selectionScreenshotToClipboardCmd[] = {"selection-screenshot-to-clipboard", NULL};
 
-static const char *increaseVolumeCmd[] = {"amixer", "-c", "1", "sset", "Master", "1%+", NULL};
-static const char *decreaseVolumeCmd[] = {"amixer", "-c", "1", "sset", "Master", "1%-", NULL};
-static const char *setMaxVolumeCmd[] = {"amixer", "-c", "1", "sset", "Master", "100%", NULL};
-static const char *muteVolumeCmd[] = {"amixer", "-c", "1", "sset", "Master", "0%", NULL};
+static const char *increaseVolumeCmd[] = {"amixer", "sset", "Master", "1%+", NULL};
+static const char *decreaseVolumeCmd[] = {"amixer", "sset", "Master", "1%-", NULL};
+static const char *setMaxVolumeCmd[] = {"amixer", "sset", "Master", "100%", NULL};
+static const char *muteVolumeCmd[] = {"amixer", "sset", "Master", "0%", NULL};
 
 static const char *increaseBrightnessCmd[] = {"xbacklight", "-inc", "1", NULL};
 static const char *decreaseBrightnessCmd[] = {"xbacklight", "-dec", "1", NULL};
