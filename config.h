@@ -7,7 +7,7 @@ static const int lockfullscreen = 1;
 static const unsigned int snap = 32;
 static const int showbar = 1;
 static const int topbar = 1;
-static const char *fonts[] = {"Source Code Pro:pixelsize=16:antialias=true:autohint=true"};
+static const char *fonts[] = {"SauceCodePro Nerd Font Mono:pixelsize=16:antialias=true:autohint=true"};
 
 static const char *colors[][3] = {
   [SchemeNorm] = {"#000000", "#fafafa", "#000000"},
@@ -30,7 +30,7 @@ static char dmenumon[2] = "0";
 static const char *dmenuCmd[] = {"dmenu_run", NULL};
 
 static const char *discordCmd[] = {"discord", NULL};
-static const char *firefoxCmd[] = {"firefox-developer-edition", NULL};
+static const char *firefoxCmd[] = {"firefox", NULL};
 static const char *intellijCmd[] = {"intellij-idea-ultimate-edition", NULL};
 static const char *nuclearCmd[] = {"nuclear", NULL};
 static const char *rocketchatCmd[] = {"rocketchat-desktop", NULL};
