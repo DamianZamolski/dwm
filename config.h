@@ -7,7 +7,7 @@ static const int lockfullscreen = 1;
 static const unsigned int snap = 32;
 static const int showbar = 1;
 static const int topbar = 1;
-static const char *fonts[] = {"SauceCodePro Nerd Font Mono:pixelsize=16:antialias=true:autohint=true"};
+static const char *fonts[] = {"SauceCodePro Nerd Font Mono:pixelsize=24:antialias=true:autohint=true"};
 
 static const char *colors[][3] = {
   [SchemeNorm] = {"#000000", "#fafafa", "#000000"},
