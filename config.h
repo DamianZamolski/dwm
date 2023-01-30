@@ -40,7 +40,8 @@ static const char* intellijCmd[] = { "intellij-idea-ultimate-edition", NULL };
 static const char* nuclearCmd[] = { "nuclear", NULL };
 static const char* rocketchatCmd[] = { "rocketchat-desktop", NULL };
 static const char* signalCmd[] = { "signal-desktop", NULL };
-static const char* stCmd[] = { "st", NULL };
+static const char* stCmd[] = { "gnome-terminal", NULL };
+static const char* teamsCmd[] = { "teams", NULL };
 static const char* thunderbirdCmd[] = { "thunderbird", NULL };
 static const char* webstormCmd[] = { "webstorm", NULL };
 
@@ -68,6 +69,18 @@ static const Key keys[] = {
   TAGKEYS(XK_7, 6),
   TAGKEYS(XK_8, 7),
   TAGKEYS(XK_9, 8),
+  { MODKEY | ControlMask | ShiftMask, XK_Print, spawn, { .v = selectionScreenshotToClipboardCmd } },
+  { MODKEY | ControlMask, XK_Print, spawn, { .v = screenshotToClipboardCmd } },
+  { MODKEY | ShiftMask, XK_0, tag, { .ui = ~0 } },
+  { MODKEY | ShiftMask, XK_comma, tagmon, { .i = -1 } },
+  { MODKEY | ShiftMask, XK_Down, spawn, { .v = muteVolumeCmd } },
+  { MODKEY | ShiftMask, XK_period, tagmon, { .i = +1 } },
+  { MODKEY | ShiftMask, XK_Print, spawn, { .v = selectionScreenshotCmd } },
+  { MODKEY | ShiftMask, XK_q, quit, { 0 } },
+  { MODKEY | ShiftMask, XK_Right, spawn, { .v = setMaxBrightnessCmd } },
+  { MODKEY | ShiftMask, XK_space, setlayout, { 0 } },
+  { MODKEY | ShiftMask, XK_t, spawn, { .v = teamsCmd } },
+  { MODKEY | ShiftMask, XK_Up, spawn, { .v = setMaxVolumeCmd } },
   { MODKEY, XK_0, view, { .ui = ~0 } },
   { MODKEY, XK_b, togglebar, { 0 } },
   { MODKEY, XK_comma, focusmon, { .i = -1 } },
@@ -94,17 +107,6 @@ static const Key keys[] = {
   { MODKEY, XK_Tab, view, { 0 } },
   { MODKEY, XK_Up, spawn, { .v = increaseVolumeCmd } },
   { MODKEY, XK_w, spawn, { .v = webstormCmd } },
-  { MODKEY | ControlMask, XK_Print, spawn, { .v = screenshotToClipboardCmd } },
-  { MODKEY | ControlMask | ShiftMask, XK_Print, spawn, { .v = selectionScreenshotToClipboardCmd } },
-  { MODKEY | ShiftMask, XK_0, tag, { .ui = ~0 } },
-  { MODKEY | ShiftMask, XK_comma, tagmon, { .i = -1 } },
-  { MODKEY | ShiftMask, XK_Down, spawn, { .v = muteVolumeCmd } },
-  { MODKEY | ShiftMask, XK_period, tagmon, { .i = +1 } },
-  { MODKEY | ShiftMask, XK_Print, spawn, { .v = selectionScreenshotCmd } },
-  { MODKEY | ShiftMask, XK_q, quit, { 0 } },
-  { MODKEY | ShiftMask, XK_Right, spawn, { .v = setMaxBrightnessCmd } },
-  { MODKEY | ShiftMask, XK_space, setlayout, { 0 } },
-  { MODKEY | ShiftMask, XK_Up, spawn, { .v = setMaxVolumeCmd } },
 };
 
 static const Button buttons[] = { 0 };
