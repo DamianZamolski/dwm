@@ -8,7 +8,7 @@ static const unsigned int snap = 32;
 static const int showbar = 1;
 static const int topbar = 1;
 static const char* fonts[] = {
-  "SauceCodePro Nerd Font Mono:pixelsize=24:antialias=true:autohint=true"
+  "SauceCodePro NFM:pixelsize=24:antialias=true:autohint=true"
 };
 
 static const char* colors[][3] = {
@@ -37,9 +37,13 @@ static const char* terminalCmd[] = { "alacritty", NULL };
 
 static const char* discordCmd[] = { "discord", NULL };
 static const char* firefoxCmd[] = { "firefox-developer-edition", NULL };
+static const char* firefoxWithPagesCmd[] = { "firefox-developer-edition", "https://www.pepper.pl/gorące", "https://www.pepper.pl/grupa/gry-bez-pradu", "https://www.pepper.pl/grupa/dom-i-mieszkanie", "https://planszeo.pl/okazje", NULL };
+static const char* pavucontrolCmd[] = { "pavucontrol", NULL };
 static const char* signalCmd[] = { "signal-desktop", NULL };
+static const char* steamCmd[] = { "steam", NULL };
 static const char* teamsCmd[] = { "teams-for-linux", NULL };
 static const char* thunderbirdCmd[] = { "thunderbird", NULL };
+static const char* vlcCmd[] = { "vlc", NULL };
 
 static const char* screenshotCmd[] = { "screenshot", NULL };
 static const char* screenshotToClipboardCmd[] = { "screenshot-to-clipboard", NULL };
@@ -70,10 +74,12 @@ static const Key keys[] = {
   { MODKEY | ShiftMask, XK_0, tag, { .ui = ~0 } },
   { MODKEY | ShiftMask, XK_comma, tagmon, { .i = -1 } },
   { MODKEY | ShiftMask, XK_Down, spawn, { .v = muteVolumeCmd } },
+  { MODKEY | ShiftMask, XK_f, spawn, { .v = firefoxWithPagesCmd } },
   { MODKEY | ShiftMask, XK_period, tagmon, { .i = +1 } },
   { MODKEY | ShiftMask, XK_Print, spawn, { .v = selectionScreenshotCmd } },
   { MODKEY | ShiftMask, XK_q, quit, { 0 } },
   { MODKEY | ShiftMask, XK_Right, spawn, { .v = setMaxBrightnessCmd } },
+  { MODKEY | ShiftMask, XK_s, spawn, { .v = steamCmd } },
   { MODKEY | ShiftMask, XK_space, setlayout, { 0 } },
   { MODKEY | ShiftMask, XK_t, spawn, { .v = teamsCmd } },
   { MODKEY | ShiftMask, XK_Up, spawn, { .v = setMaxVolumeCmd } },
@@ -89,6 +95,7 @@ static const Key keys[] = {
   { MODKEY, XK_l, setmfact, { .f = +0.05 } },
   { MODKEY, XK_Left, spawn, { .v = decreaseBrightnessCmd } },
   { MODKEY, XK_m, spawn, { .v = dmenuCmd } },
+  { MODKEY, XK_p, spawn, { .v = pavucontrolCmd } },
   { MODKEY, XK_period, focusmon, { .i = +1 } },
   { MODKEY, XK_Print, spawn, { .v = screenshotCmd } },
   { MODKEY, XK_q, killclient, { 0 } },
@@ -99,6 +106,7 @@ static const Key keys[] = {
   { MODKEY, XK_t, spawn, { .v = thunderbirdCmd } },
   { MODKEY, XK_Tab, view, { 0 } },
   { MODKEY, XK_Up, spawn, { .v = increaseVolumeCmd } },
+  { MODKEY, XK_v, spawn, { .v = vlcCmd } },
 };
 
 static const Button buttons[] = { 0 };
