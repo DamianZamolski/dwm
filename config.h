@@ -1,14 +1,15 @@
-static const unsigned int borderpx = 4;
 static const char* tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
 static const float mfact = 0.55;
+static const int lockfullscreen = 1;
 static const int nmaster = 1;
 static const int resizehints = 0;
-static const int lockfullscreen = 1;
-static const unsigned int snap = 32;
 static const int showbar = 1;
 static const int topbar = 1;
+static const unsigned int borderpx = 4;
+static const unsigned int snap = 32;
+
 static const char* fonts[] = {
-  "SauceCodePro NFM:pixelsize=24:antialias=true:autohint=true"
+  "SauceCodePro Nerd Font Mono:size=21:antialias=true:autohint=true",
 };
 
 static const char* colors[][3] = {
@@ -32,32 +33,34 @@ static const Layout layouts[] = {
   }
 
 static char dmenumon[2] = "0";
+
+static const char* discord[] = { "discord", NULL };
 static const char* dmenuCmd[] = { "dmenu_run", NULL };
-static const char* terminalCmd[] = { "alacritty", NULL };
-
-static const char* discordCmd[] = { "discord", NULL };
-static const char* firefoxCmd[] = { "firefox-developer-edition", NULL };
-static const char* firefoxWithPagesCmd[] = { "firefox-developer-edition", "https://www.pepper.pl/gorące", "https://www.pepper.pl/grupa/gry-bez-pradu", "https://www.pepper.pl/grupa/dom-i-mieszkanie", "https://planszeo.pl/okazje", NULL };
-static const char* pavucontrolCmd[] = { "pavucontrol", NULL };
+static const char* firefox[] = { "firefox-developer-edition", NULL };
+static const char* firefoxWithPages[] = { "firefox-developer-edition", "https://www.pepper.pl/gorące", "https://www.pepper.pl/grupa/gry-bez-pradu", "https://www.pepper.pl/grupa/dom-i-mieszkanie", "https://planszeo.pl/okazje", NULL };
+static const char* inkscape[] = { "inkscape", NULL };
+static const char* pwvucontrol[] = { "pwvucontrol", NULL };
+static const char* rofi[] = { "rofi", "-show", "drun", NULL };
 static const char* signalCmd[] = { "signal-desktop", NULL };
-static const char* steamCmd[] = { "steam", NULL };
-static const char* teamsCmd[] = { "teams-for-linux", NULL };
-static const char* thunderbirdCmd[] = { "thunderbird", NULL };
-static const char* vlcCmd[] = { "vlc", NULL };
+static const char* steam[] = { "steam", NULL };
+static const char* teams[] = { "teams-for-linux", NULL };
+static const char* terminalCmd[] = { "alacritty", NULL, NULL };
+static const char* thunderbird[] = { "thunderbird", NULL };
+static const char* vlc[] = { "vlc", NULL };
 
-static const char* screenshotCmd[] = { "screenshot", NULL };
-static const char* screenshotToClipboardCmd[] = { "screenshot-to-clipboard", NULL };
-static const char* selectionScreenshotCmd[] = { "selection-screenshot", NULL };
-static const char* selectionScreenshotToClipboardCmd[] = { "selection-screenshot-to-clipboard", NULL };
+static const char* screenshot[] = { "screenshot", NULL };
+static const char* screenshotToClipboard[] = { "screenshot-to-clipboard", NULL };
+static const char* selectionScreenshot[] = { "selection-screenshot", NULL };
+static const char* selectionScreenshotToClipboard[] = { "selection-screenshot-to-clipboard", NULL };
 
-static const char* increaseVolumeCmd[] = { "amixer", "sset", "Master", "1%+", NULL };
-static const char* decreaseVolumeCmd[] = { "amixer", "sset", "Master", "1%-", NULL };
-static const char* setMaxVolumeCmd[] = { "amixer", "sset", "Master", "100%", NULL };
-static const char* muteVolumeCmd[] = { "amixer", "sset", "Master", "0%", NULL };
+static const char* decreaseVolume[] = { "wpctl", "set-volume", "@DEFAULT_SINK@", "1%-", NULL };
+static const char* increaseVolume[] = { "wpctl", "set-volume", "@DEFAULT_SINK@", "1%+", NULL };
+static const char* muteVolume[] = { "wpctl", "set-volume", "@DEFAULT_SINK@", "0%", NULL };
+static const char* setMaxVolume[] = { "wpctl", "set-volume", "@DEFAULT_SINK@", "100%", NULL };
 
-static const char* increaseBrightnessCmd[] = { "xbacklight", "-inc", "1", NULL };
-static const char* decreaseBrightnessCmd[] = { "xbacklight", "-dec", "1", NULL };
-static const char* setMaxBrightnessCmd[] = { "xbacklight", "-set", "100", NULL };
+static const char* increaseBrightness[] = { "xbacklight", "-inc", "1", NULL };
+static const char* decreaseBrightness[] = { "xbacklight", "-dec", "1", NULL };
+static const char* setMaxBrightness[] = { "xbacklight", "-set", "100", NULL };
 
 static const Key keys[] = {
   TAGKEYS(XK_1, 0),
@@ -69,44 +72,46 @@ static const Key keys[] = {
   TAGKEYS(XK_7, 6),
   TAGKEYS(XK_8, 7),
   TAGKEYS(XK_9, 8),
-  { MODKEY | ControlMask | ShiftMask, XK_Print, spawn, { .v = selectionScreenshotToClipboardCmd } },
-  { MODKEY | ControlMask, XK_Print, spawn, { .v = screenshotToClipboardCmd } },
+  { ShiftMask, XK_Print, spawn, { .v = selectionScreenshotToClipboard } },
+  { 0, XK_Print, spawn, { .v = screenshotToClipboard } },
   { MODKEY | ShiftMask, XK_0, tag, { .ui = ~0 } },
   { MODKEY | ShiftMask, XK_comma, tagmon, { .i = -1 } },
-  { MODKEY | ShiftMask, XK_Down, spawn, { .v = muteVolumeCmd } },
-  { MODKEY | ShiftMask, XK_f, spawn, { .v = firefoxWithPagesCmd } },
+  { MODKEY | ShiftMask, XK_Down, spawn, { .v = muteVolume } },
+  { MODKEY | ShiftMask, XK_f, spawn, { .v = firefoxWithPages } },
   { MODKEY | ShiftMask, XK_period, tagmon, { .i = +1 } },
-  { MODKEY | ShiftMask, XK_Print, spawn, { .v = selectionScreenshotCmd } },
+  { MODKEY | ShiftMask, XK_Print, spawn, { .v = selectionScreenshot } },
   { MODKEY | ShiftMask, XK_q, quit, { 0 } },
-  { MODKEY | ShiftMask, XK_Right, spawn, { .v = setMaxBrightnessCmd } },
-  { MODKEY | ShiftMask, XK_s, spawn, { .v = steamCmd } },
+  { MODKEY | ShiftMask, XK_Right, spawn, { .v = setMaxBrightness } },
+  { MODKEY | ShiftMask, XK_s, spawn, { .v = steam } },
   { MODKEY | ShiftMask, XK_space, setlayout, { 0 } },
-  { MODKEY | ShiftMask, XK_t, spawn, { .v = teamsCmd } },
-  { MODKEY | ShiftMask, XK_Up, spawn, { .v = setMaxVolumeCmd } },
+  { MODKEY | ShiftMask, XK_t, spawn, { .v = teams } },
+  { MODKEY | ShiftMask, XK_Up, spawn, { .v = setMaxVolume } },
   { MODKEY, XK_0, view, { .ui = ~0 } },
   { MODKEY, XK_b, togglebar, { 0 } },
   { MODKEY, XK_comma, focusmon, { .i = -1 } },
-  { MODKEY, XK_d, spawn, { .v = discordCmd } },
-  { MODKEY, XK_Down, spawn, { .v = decreaseVolumeCmd } },
-  { MODKEY, XK_f, spawn, { .v = firefoxCmd } },
+  { MODKEY, XK_d, spawn, { .v = discord } },
+  { MODKEY, XK_Down, spawn, { .v = decreaseVolume } },
+  { MODKEY, XK_f, spawn, { .v = firefox } },
   { MODKEY, XK_h, setmfact, { .f = -0.05 } },
+  { MODKEY, XK_i, spawn, { .v = inkscape } },
   { MODKEY, XK_j, focusstack, { .i = +1 } },
   { MODKEY, XK_k, focusstack, { .i = -1 } },
   { MODKEY, XK_l, setmfact, { .f = +0.05 } },
-  { MODKEY, XK_Left, spawn, { .v = decreaseBrightnessCmd } },
+  { MODKEY, XK_Left, spawn, { .v = decreaseBrightness } },
   { MODKEY, XK_m, spawn, { .v = dmenuCmd } },
-  { MODKEY, XK_p, spawn, { .v = pavucontrolCmd } },
+  { MODKEY, XK_p, spawn, { .v = pwvucontrol } },
   { MODKEY, XK_period, focusmon, { .i = +1 } },
-  { MODKEY, XK_Print, spawn, { .v = screenshotCmd } },
+  { ControlMask, XK_Print, spawn, { .v = screenshot } },
   { MODKEY, XK_q, killclient, { 0 } },
+  { MODKEY, XK_r, spawn, { .v = rofi } },
   { MODKEY, XK_Return, spawn, { .v = terminalCmd } },
-  { MODKEY, XK_Right, spawn, { .v = increaseBrightnessCmd } },
+  { MODKEY, XK_Right, spawn, { .v = increaseBrightness } },
   { MODKEY, XK_s, spawn, { .v = signalCmd } },
   { MODKEY, XK_space, zoom, { 0 } },
-  { MODKEY, XK_t, spawn, { .v = thunderbirdCmd } },
+  { MODKEY, XK_t, spawn, { .v = thunderbird } },
   { MODKEY, XK_Tab, view, { 0 } },
-  { MODKEY, XK_Up, spawn, { .v = increaseVolumeCmd } },
-  { MODKEY, XK_v, spawn, { .v = vlcCmd } },
+  { MODKEY, XK_Up, spawn, { .v = increaseVolume } },
+  { MODKEY, XK_v, spawn, { .v = vlc } },
 };
 
 static const Button buttons[] = { 0 };
