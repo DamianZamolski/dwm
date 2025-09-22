@@ -9,7 +9,7 @@ static const unsigned int borderpx = 4;
 static const unsigned int snap = 32;
 
 static const char* fonts[] = {
-  "SauceCodePro Nerd Font Mono:size=21:antialias=true:autohint=true",
+  "monospace:size=21:antialias=true:autohint=true",
 };
 
 static const char* colors[][3] = {
@@ -34,12 +34,15 @@ static const Layout layouts[] = {
 
 static char dmenumon[2] = "0";
 
+static const char* bambuStudio[] = { "bambu-studio", NULL };
 static const char* discord[] = { "discord", NULL };
 static const char* dmenuCmd[] = { "dmenu_run", NULL };
+static const char* emoji[] = { "rofi", "-modi", "emoji", "-show", "emoji", NULL };
 static const char* firefox[] = { "firefox-developer-edition", NULL };
-static const char* firefoxWithPages[] = { "firefox-developer-edition", "https://www.pepper.pl/gorące", "https://www.pepper.pl/grupa/gry-bez-pradu", "https://www.pepper.pl/grupa/dom-i-mieszkanie", "https://planszeo.pl/okazje", NULL };
+static const char* gimp[] = { "gimp", NULL };
 static const char* inkscape[] = { "inkscape", NULL };
-static const char* messengerCmd[] = { "caprine", NULL };
+static const char* searchModel[] = { "rofi-search-model", NULL };
+static const char* openScad[] = { "openscad", NULL };
 static const char* pwvucontrol[] = { "pwvucontrol", NULL };
 static const char* rofi[] = { "rofi", "-show", "drun", NULL };
 static const char* signalCmd[] = { "signal-desktop", NULL };
@@ -73,14 +76,13 @@ static const Key keys[] = {
   TAGKEYS(XK_7, 6),
   TAGKEYS(XK_8, 7),
   TAGKEYS(XK_9, 8),
-  { ShiftMask, XK_Print, spawn, { .v = selectionScreenshotToClipboard } },
   { 0, XK_Print, spawn, { .v = screenshotToClipboard } },
+  { ControlMask | ShiftMask, XK_Print, spawn, { .v = selectionScreenshot } },
+  { ControlMask, XK_Print, spawn, { .v = screenshot } },
   { MODKEY | ShiftMask, XK_0, tag, { .ui = ~0 } },
   { MODKEY | ShiftMask, XK_comma, tagmon, { .i = -1 } },
   { MODKEY | ShiftMask, XK_Down, spawn, { .v = muteVolume } },
-  { MODKEY | ShiftMask, XK_f, spawn, { .v = firefoxWithPages } },
   { MODKEY | ShiftMask, XK_period, tagmon, { .i = +1 } },
-  { MODKEY | ShiftMask, XK_Print, spawn, { .v = selectionScreenshot } },
   { MODKEY | ShiftMask, XK_q, quit, { 0 } },
   { MODKEY | ShiftMask, XK_Right, spawn, { .v = setMaxBrightness } },
   { MODKEY | ShiftMask, XK_s, spawn, { .v = steam } },
@@ -88,21 +90,23 @@ static const Key keys[] = {
   { MODKEY | ShiftMask, XK_t, spawn, { .v = teams } },
   { MODKEY | ShiftMask, XK_Up, spawn, { .v = setMaxVolume } },
   { MODKEY, XK_0, view, { .ui = ~0 } },
-  { MODKEY, XK_b, togglebar, { 0 } },
+  { MODKEY, XK_b, spawn, { .v = bambuStudio } },
   { MODKEY, XK_comma, focusmon, { .i = -1 } },
   { MODKEY, XK_d, spawn, { .v = discord } },
   { MODKEY, XK_Down, spawn, { .v = decreaseVolume } },
+  { MODKEY, XK_e, spawn, { .v = emoji } },
   { MODKEY, XK_f, spawn, { .v = firefox } },
+  { MODKEY, XK_g, spawn, { .v = gimp } },
   { MODKEY, XK_h, setmfact, { .f = -0.05 } },
   { MODKEY, XK_i, spawn, { .v = inkscape } },
   { MODKEY, XK_j, focusstack, { .i = +1 } },
   { MODKEY, XK_k, focusstack, { .i = -1 } },
   { MODKEY, XK_l, setmfact, { .f = +0.05 } },
   { MODKEY, XK_Left, spawn, { .v = decreaseBrightness } },
-  { MODKEY, XK_m, spawn, { .v = messengerCmd } },
+  { MODKEY, XK_m, spawn, { .v = searchModel } },
+  { MODKEY, XK_o, spawn, { .v = openScad } },
   { MODKEY, XK_p, spawn, { .v = pwvucontrol } },
   { MODKEY, XK_period, focusmon, { .i = +1 } },
-  { ControlMask, XK_Print, spawn, { .v = screenshot } },
   { MODKEY, XK_q, killclient, { 0 } },
   { MODKEY, XK_r, spawn, { .v = rofi } },
   { MODKEY, XK_Return, spawn, { .v = terminalCmd } },
@@ -113,6 +117,7 @@ static const Key keys[] = {
   { MODKEY, XK_Tab, view, { 0 } },
   { MODKEY, XK_Up, spawn, { .v = increaseVolume } },
   { MODKEY, XK_v, spawn, { .v = vlc } },
+  { ShiftMask, XK_Print, spawn, { .v = selectionScreenshotToClipboard } },
 };
 
 static const Button buttons[] = { 0 };
